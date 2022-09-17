@@ -135,6 +135,8 @@ c	a/b	util/IProgressUpdate
 	m	(Ljava/lang/String;)V	b	displayLoadingString
 	m	(Ljava/lang/String;)V	a	displayProgressMessage
 c	net/minecraft/a/a/c	net/minecraft/game/world/EnumSkyBlock
+	f	Lnet/minecraft/a/a/c;	b	Block
+	f	Lnet/minecraft/a/a/c;	a	Sky
 c	net/minecraft/a/a/b	net/minecraft/game/world/IWorldAccess
 	m	(Ljava/lang/String;DDDDDD)V	a	spawnParticle
 	m	(III)V	a	markBlockAndNeighborsNeedsUpdate
@@ -156,53 +158,66 @@ c	net/minecraft/a/a/c/a/a	net/minecraft/game/world/terrain/noise/NoiseGeneratorP
 	m	(DD)D	a	generateNoise
 	f	D	b	xCoord
 c	net/minecraft/a/a/e	net/minecraft/game/world/World
-	m	(II)Z	c	chunkExists
-	m	(IIII)V	c	setBlockWithNotify
+	m	(IIII)V	c	markBlocksDirtyVertical
 	m	(II)Z	a	blockExists
 	f	I	n	skylightSubtracted
 	m	(Lnet/minecraft/a/d/b;Lnet/minecraft/a/a/d/c;)Z	a	isMaterialInBB
-	m	(III)I	c	getBlockMetadata
 	m	(Lnet/minecraft/a/d/b;)Z	c	isBoundingBoxBurning
 	m	(III)I	a	getBlockId
-	m	(F)Lnet/minecraft/a/d/a;	d	getFogColor
 	m	(F)Lnet/minecraft/a/d/a;	a	getSkyColor
-	m	()Ljava/util/List;	f	getLoadedEntityList
 	m	(II)I	b	getHeightValue
-	m	(F)Lnet/minecraft/a/d/a;	c	getCloudColor
 	f	I	b	difficultySetting
 	m	(Lnet/minecraft/a/a/b;)V	b	removeWorldAccess
-	f	Ljava/util/List;	i	loadedEntityList
-	f	Lnet/minecraft/a/c/b;	a	playerEntity
 	m	(III)F	e	getBrightness
-	m	(III)Z	f	isBlockNormalCube
 	f	I	j	worldTime
-	f	J	l	fogColor
 	m	(F)F	b	getCelestialAngle
 	f	F	f	spawnY
-	m	(Lnet/minecraft/a/d/b;)Ljava/util/List;	a	getCollidingBoundingBoxes
-	m	(Lnet/minecraft/a/a/c;III)I	a	getSavedLightValue
+	m	(Lnet/minecraft/a/a/c;IIII)V	a	neighborLightPropagationChanged
 	m	(III)Lnet/minecraft/a/a/d/c;	b	getBlockMaterial
 	f	Lnet/minecraft/a/a/a/c;	c	pathFinder
-	m	(IIII)Z	b	setBlockMetadata
 	f	Ljava/util/Random;	d	rand
+	m	()V	e	restartTimeOfDay
 	m	(Lnet/minecraft/a/d/b;)Z	b	getIsAnyLiquid
 	m	(Lnet/minecraft/a/d/a;Lnet/minecraft/a/d/a;)Lnet/minecraft/a/d/c;	a	rayTraceBlocks
-	m	(Lnet/minecraft/a/a/b;)V	a	addWorldAccess
-	f	Ljava/util/List;	h	lightingToUpdate
-	m	(II)Lnet/minecraft/a/a/e/d;	d	getChunkFromChunkCoords
+	m	(Lnet/minecraft/a/a/c;IIIIII)V	a	scheduleLightingUpdate
 	m	(F)F	e	getStarBrightness
 	f	J	m	cloudColor
 	m	(Lnet/minecraft/a/c/b;Ljava/lang/String;FF)V	a	playSoundAtEntity
 	m	()Ljava/lang/String;	b	debugSkylightUpdates
+	m	(DDDLjava/lang/String;FF)V	a	playSoundEffect
+	f	F	e	spawnX
+	f	Lnet/minecraft/a/a/e/a;	q	chunkProvider
+	m	(II)Z	c	chunkExists
+	m	(III)I	c	getBlockMetadata
+	m	(IIII)V	a	setBlockMetadataWithNotify
+	m	(F)Lnet/minecraft/a/d/a;	d	getFogColor
+	m	()V	d	updatingLighting
+	m	()Ljava/util/List;	f	getLoadedEntityList
+	m	(F)Lnet/minecraft/a/d/a;	c	getCloudColor
+	f	Ljava/util/List;	i	loadedEntityList
+	f	Lnet/minecraft/a/c/b;	a	playerEntity
+	m	(III)Z	f	isBlockNormalCube
+	f	J	l	fogColor
+	m	(Lnet/minecraft/a/d/b;)Ljava/util/List;	a	getCollidingBoundingBoxes
+	m	(Lnet/minecraft/a/a/c;III)I	a	getSavedLightValue
+	m	(IIII)Z	b	setBlockMetadata
+	m	(III)I	d	canExistingBlockSeeTheSky
+	m	(Lnet/minecraft/a/a/b;)V	a	addWorldAccess
+	f	Ljava/util/List;	h	lightingToUpdate
+	m	(II)Lnet/minecraft/a/a/e/d;	d	getChunkFromChunkCoords
 	f	[F	o	lightBrightnessTable
 	f	F	g	spawnZ
 	f	J	k	skyColor
 	f	Ljava/util/List;	p	worldAccesses
-	m	(DDDLjava/lang/String;FF)V	a	playSoundEffect
-	f	F	e	spawnX
-	f	Lnet/minecraft/a/a/e/a;	q	chunkProvider
 	m	(Ljava/lang/String;DDDDDD)V	a	spawnParticle
 c	net/minecraft/a/a/d	net/minecraft/game/world/MetadataChunkBlock
+	f	I	c	y
+	f	I	d	z
+	f	I	b	x
+	f	Lnet/minecraft/a/a/c;	a	skyBlock
+	f	I	g	maxZ
+	f	I	e	maxX
+	f	I	f	maxY
 c	net/minecraft/a/c/b/b	net/minecraft/game/entity/animal/EntitySheep
 	m	()Ljava/lang/String;	g	getHurtSound
 	m	()Ljava/lang/String;	h	getDeathSound
